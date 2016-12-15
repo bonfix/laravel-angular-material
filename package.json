@@ -3,6 +3,8 @@
   "scripts": {
     "prod": "gulp --production",
     "dev": "gulp watch"
+    "start": "node app",
+    "postinstall": "gulp default"
   },
   "devDependencies": {
     "babel-core": "^6.16.0",

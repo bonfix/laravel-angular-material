@@ -13,6 +13,13 @@ elixir.config.css.folder = 'angular';
 elixir.config.css.sass.folder = 'angular';
 elixir.config.js.folder = 'angular';
 
+gulp.task('serveprod', function() {
+  connect.server({
+    root: [your_project_path],
+    port: process.env.PORT || 5000, // localhost:5000
+    livereload: false
+  });
+});
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
