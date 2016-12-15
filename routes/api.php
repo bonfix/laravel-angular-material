@@ -26,10 +26,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::group(['middleware' => 'auth:api'], function($router)
-{
-  $router->resource('participants', 'ParticipantController');
-});
+// Route::group(['middleware' => 'auth:api'], function($router)
+// {
+//   $router->resource('participants', 'ParticipantController');
+// });
 
 
-Route::resource('participants', 'ParticipantAPIController');
+Route::resource('participants', 'API\ParticipantAPIController');
