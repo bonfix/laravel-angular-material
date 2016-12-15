@@ -25,3 +25,11 @@ Route::post('auth/password/reset', 'Auth\PasswordResetController@reset');
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::group(['middleware' => 'auth:api'], function($router)
+{
+  $router->resource('participants', 'ParticipantController');
+});
+
+
+Route::resource('participants', 'ParticipantAPIController');
