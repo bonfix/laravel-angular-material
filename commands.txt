@@ -1,0 +1,19 @@
+composer dump
+route:clear
+
+git add .
+git commit -am "make it better"
+git push heroku master
+
+That's it! Commit and push and migrate:
+
+$ git add .
+$ git commit -m "Convert to use Heroku PostgreSQL database"
+$ git push heroku master
+$ heroku run php /app/artisan migrate
+
+git update-index --assume-unchanged config/database.php
+git update-index --no-assume-unchanged path/to/file.txt.
+
+php artisan view:clear
+php artisan infyom:migration
