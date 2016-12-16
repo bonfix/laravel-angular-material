@@ -32,3 +32,6 @@ Route::group(['middleware' => 'auth'], function($router)
   $router->resource('participants', 'ParticipantController');
 });
 
+
+
+Route::resource('serviceProviders', 'ServiceProviderController');
