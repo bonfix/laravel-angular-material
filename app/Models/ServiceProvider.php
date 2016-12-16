@@ -14,7 +14,7 @@ class ServiceProvider extends Model
 {
     use SoftDeletes;
 
-    public $table = 'providers';
+    public $table = 'service_providers';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
