@@ -30,8 +30,8 @@ Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function($router)
 {
   $router->resource('participants', 'ParticipantController');
+  Route::resource('serviceProviders', 'ServiceProviderController');
 });
 
 
 
-Route::resource('serviceProviders', 'ServiceProviderController');

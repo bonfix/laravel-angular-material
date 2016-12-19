@@ -17,3 +17,4 @@ git update-index --no-assume-unchanged path/to/file.txt.
 
 php artisan view:clear
 php artisan infyom:migration
+heroku ps:psql
