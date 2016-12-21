@@ -35,3 +35,5 @@ Route::get('/user', function (Request $request) {
 
 Route::resource('participants', 'API\ParticipantAPIController');
 Route::resource('service-providers', 'API\ServiceProviderAPIController');
+
+Route::resource('sms', 'SmsAPIController');

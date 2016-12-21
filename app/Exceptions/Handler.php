@@ -52,6 +52,16 @@ class Handler extends ExceptionHandler
             return response()->error($exception->validator, 422);
         }
 
+        $m = $exception->getMessage() == null ? "Page not found!" : $exception->getMessage();
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException && ($this->isApiRoute($request))) {
+            return response()->json(['error' => $m, 'success'=>false], 404);
+        }
+
+        $m = $exception->getMessage() == null ? "Method not allowed!" : $exception->getMessage();
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException && ( $this->isApiRoute($request))) {
+            return response()->json(['error'=>$m, 'success'=>false], 405);
+        }
+
         return parent::render($request, $exception);
     }
 
@@ -64,8 +74,8 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($request->expectsJson() || $this->isApiRoute($request)) {
-            return response()->json(['error' => $exception->getMessage()], 401);
+        if ($this->isApiRoute($request)) {
+            return response()->json(['error' => $exception->getMessage(), 'success'=>false], 401);
         }
 
         return redirect()->guest('login');
@@ -79,6 +89,6 @@ class Handler extends ExceptionHandler
      */
     protected function isApiRoute($request)
     {
-        return $request->route() && in_array('api', $request->route()->middleware());
+        return ($request->route() && in_array('api', $request->route()->middleware())) || $request->expectsJson();
     }
 }

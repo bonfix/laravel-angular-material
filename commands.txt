@@ -18,3 +18,10 @@ git update-index --no-assume-unchanged path/to/file.txt.
 php artisan view:clear
 php artisan infyom:migration
 heroku ps:psql
+
+php artisan infyom:scaffold $MODEL_NAME --fromTable --tableName=$TABLE_NAME
+php artisan infyom:api_scaffold Post --skip=routes,migration,model
+
+php artisan infyom:api_scaffold Sms --fromTable --tableName=sms
+
+php artisan migrate:generate table1,table2,table3,table4,table5
