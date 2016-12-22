@@ -20,8 +20,8 @@ class CreateSmsTable extends Migration {
 			$table->integer('person')->nullable();
 			$table->boolean('read')->nullable()->default(1);
 			$table->boolean('seen')->nullable()->default(1);
-			$table->integer('date_received')->nullable();
-			$table->integer('date_sent')->nullable();
+			$table->bigInteger('date_received')->nullable();
+			$table->bigInteger('date_sent')->nullable();
 			$table->integer('thread_id')->nullable()->default(0);
 			$table->string('status', 50)->nullable();
 			$table->string('address', 50)->nullable();
