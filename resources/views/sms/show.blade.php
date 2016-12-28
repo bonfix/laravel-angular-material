@@ -44,7 +44,7 @@
             <td>{!! $sms->address !!}</td>
             <td<?php 
             if($sms->type == 'INBOX')
-                echo 'class=inbox';
+                echo 'class=\'inbox\'';
             ?>
             >{!! $sms->type !!}</td>
             
