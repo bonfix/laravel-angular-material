@@ -79,15 +79,26 @@ class SmsController extends AppBaseController
      */
     public function show($id)
     {
-        $sms = $this->smsRepository->findWithoutFail($id);
+        // $sms = $this->smsRepository->findWithoutFail($id);
 
-        if (empty($sms)) {
-            Flash::error('Sms not found');
+        // if (empty($sms)) {
+        //     Flash::error('Sms not found');
 
-            return redirect(route('sms.index'));
-        }
+        //     return redirect(route('sms.index'));
+        // }
 
-        return view('sms.show')->with('sms', $sms);
+        // return view('sms.show')->with('sms', $sms);
+
+         $this->smsRepository->pushCriteria(new RequestCriteria($request));
+        //$sms = $this->smsRepository
+        $sms = DB::table('sms')
+        ->where('thread_id', '=', $id)
+        ->orderBy('date_received', 'desc')
+        //->limit(20)
+        ->get();
+
+        return view('sms.show')
+            ->with('sms', $sms);
     }
 
     /**
