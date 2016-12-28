@@ -42,11 +42,7 @@
             <td>{!! $sms->thread_id !!}</td>
             
             <td>{!! $sms->address !!}</td>
-            <td<?php 
-            if($sms->type == 'INBOX')
-                echo 'class=\'inbox\'';
-            ?>
-            >{!! $sms->type !!}</td>
+            <td>{!! $sms->type !!}</td>
             
             <td>
                 {!! Form::open(['route' => ['sms.destroy', $sms->id], 'method' => 'delete']) !!}
