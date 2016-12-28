@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use DB;
 
 class SmsController extends AppBaseController
 {
@@ -30,7 +31,12 @@ class SmsController extends AppBaseController
     public function index(Request $request)
     {
         $this->smsRepository->pushCriteria(new RequestCriteria($request));
-        $sms = $this->smsRepository->all();
+        //$sms = $this->smsRepository
+        $sms = DB::table('sms')
+        ->groupBy(['thread_id', 'id'])
+        ->orderBy('date_received', 'desc')
+        ->limit(20)
+        ->get();
 
         return view('sms.index')
             ->with('sms', $sms);

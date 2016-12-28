@@ -17,7 +17,7 @@ git update-index --no-assume-unchanged path/to/file.txt.
 
 php artisan view:clear
 php artisan infyom:migration
-heroku ps:psql
+
 
 php artisan infyom:scaffold $MODEL_NAME --fromTable --tableName=$TABLE_NAME
 php artisan infyom:api_scaffold Post --skip=routes,migration,model
@@ -25,3 +25,45 @@ php artisan infyom:api_scaffold Post --skip=routes,migration,model
 php artisan infyom:api_scaffold Sms --fromTable --tableName=sms
 
 php artisan migrate:generate table1,table2,table3,table4,table5
+
+
+ADB
+adb backup -noapk -f D:/myAppBackup.ab com.cityhyper.batterysaver
+adb restore /backup/myAppBackup.ab
+
+adb uninstall -k com.cityhyper.batterysaver
+
+Heroku Database 
+$ heroku run php /app/artisan migrate
+heroku pg:psql
+
+*********************88
+yum update -y
+#install php
+yum -y install epel-release
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+wget https://centos7.iuscommunity.org/ius-release.rpm
+rpm -Uvh ius-release*.rpm
+yum -y update
+yum -y install php56u php56u-opcache php56u-xml php56u-mcrypt php56u-gd php56u-devel php56u-mysql php56u-intl php56u-mbstring php56u-bcmath
+
+systemctl start httpd.service
+systemctl enable httpd.service
+
+systemctl start postgresql
+systemctl enable postgresql
+
+#install mysql
+yum install npm -y
+npm install bower -g
+npm install gulp -g
+
+~permissions
+http://fideloper.com/user-group-permissions-chmod-apache
+https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-centos-7
+
+sudo -i -u postgres
+
+mkdir -p /var/www/html/galdee.com/logs
+mkdir -p /var/www/html/cityhyper.com/logs
+mkdir -p /var/www/html/cityhyper.com/monitor/public
