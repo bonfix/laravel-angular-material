@@ -89,7 +89,7 @@ class SmsController extends AppBaseController
 
         // return view('sms.show')->with('sms', $sms);
 
-         $this->smsRepository->pushCriteria(new RequestCriteria($request));
+       //  $this->smsRepository->pushCriteria(new RequestCriteria($request));
         //$sms = $this->smsRepository
         $sms = DB::table('sms')
         ->where('thread_id', '=', $id)
