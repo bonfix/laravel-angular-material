@@ -35,7 +35,7 @@ class SmsController extends AppBaseController
         $sms = DB::table('sms')
         ->groupBy(['thread_id', 'id'])
         ->orderBy('date_received', 'desc')
-        ->limit(20)
+        //->limit(20)
         ->get();
 
         return view('sms.index')
