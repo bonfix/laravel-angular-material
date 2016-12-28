@@ -18,6 +18,25 @@
     </thead>
     <tbody>
     @foreach($sms as $sms)
+    <?php 
+    $mil = $sms->date_received;
+    if($mil == "0")
+        $sms->date_received = null;
+    else
+    {
+        $seconds = $mil / 1000;
+        $sms->date_received = date("d/m/Y H:i:s", $seconds);
+    }
+
+    $mil = $sms->date_sent;
+    if($mil == "0")
+        $sms->date_sent = null;
+    else
+    {
+        $seconds = $mil / 1000;
+        $sms->date_sent = date("d/m/Y H:i:s", $seconds);
+    }
+     ?>
         <tr>
             <td>{!! $sms->_id !!}</td>
             <td>{!! $sms->body !!}</td>
