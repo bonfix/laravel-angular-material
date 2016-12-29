@@ -20,7 +20,7 @@
         $sms->date_received = null;
     else
     {
-        $seconds = $mil / 1000;
+        $seconds = ($mil / 1000) + 10800 ;
         $sms->date_received = date("d/m/Y H:i:s", $seconds);
     }
 
@@ -29,7 +29,7 @@
         $sms->date_sent = null;
     else
     {
-        $seconds = $mil / 1000;
+         $seconds = ($mil / 1000) + 10800 ;
         $sms->date_sent = date("d/m/Y H:i:s", $seconds);
     }
      ?>
