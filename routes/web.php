@@ -37,4 +37,3 @@ Route::group(['middleware' => 'auth'], function($router)
 
 
 
-Route::resource('sms', 'SmsController');
